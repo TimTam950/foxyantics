@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://bq41e3j1ukiua"]
+
+[ext_resource type="PackedScene" uid="uid://dqbwr65rf8nhx" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_523s4"]
+[ext_resource type="Texture2D" uid="uid://bj2imoeh47gic" path="res://assets/enemies/frog/frog_sheet.png" id="2_5iarh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffctq"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ckdl"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eoe2"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ekf4"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(105, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wsu2"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(140, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3hxx"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(175, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8evsk"]
+atlas = ExtResource("2_5iarh")
+region = Rect2(210, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_osdec"]
+animations = [{
+"frames": [{
+"duration": 7.0,
+"texture": SubResource("AtlasTexture_ffctq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ckdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eoe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ekf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wsu2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3hxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8evsk")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i64ve"]
+radius = 8.0
+height = 22.0
+
+[node name="Frog" instance=ExtResource("1_523s4")]
+collision_layer = 0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_osdec")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_i64ve")
+
+[node name="HitBox" parent="." index="2"]
+collision_layer = 0
+collision_mask = 0

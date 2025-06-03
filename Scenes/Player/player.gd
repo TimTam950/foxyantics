@@ -10,6 +10,9 @@ const MAX_FALL: float = 350.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
 
+func _enter_tree() -> void:
+	add_to_group(Constants.PLAYER_GROUP)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
